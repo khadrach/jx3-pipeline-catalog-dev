@@ -56,7 +56,13 @@ spec:
             #!/busybox/sh
             source .jx/variables.sh
             cp /tekton/creds-secrets/tekton-container-registry-auth/.dockerconfigjson /kaniko/.docker/config.json
-            /kaniko/executor $KANIKO_FLAGS --context=/workspace/source --dockerfile=Dockerfile --destination=$PUSH_CONTAINER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
+            /kaniko/executor $KANIKO_FLAGS \
+              --build-arg=DOCKER_REGISTRY=$DOCKER_REGISTRY/jx \
+              --cache=true \
+              --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME \
+              --context=/workspace/source \
+              --dockerfile=Dockerfile \
+              --destination=$PUSH_CONTAINER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
         - image: ghcr.io/jenkins-x/jx-preview:0.0.172
           name: promote-jx-preview
           resources: {}
@@ -70,5 +76,5 @@ spec:
             secretName: jenkins-maven-settings
   podTemplate: {}
   serviceAccountName: tekton-bot
-  timeout: 240h0m0s
+  timeout: 20m0s
 status: {}
