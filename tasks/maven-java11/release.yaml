@@ -124,5 +124,5 @@ spec:
             secretName: jenkins-release-gpg
   podTemplate: {}
   serviceAccountName: tekton-bot
-  timeout: 240h0m0s
+  timeout: 20m0s
 status: {}
