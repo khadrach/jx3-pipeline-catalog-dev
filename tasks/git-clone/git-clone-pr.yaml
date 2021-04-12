@@ -17,6 +17,7 @@ spec:
       git config --global credential.helper store
       git clone $REPO_URL $SUBDIR
       cd $SUBDIR
+      git submodule update --init --recursive
       git checkout $PULL_PULL_SHA
       echo "checked out revision: $PULL_PULL_SHA to dir: $SUBDIR"
     image: gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init:v0.19.0
