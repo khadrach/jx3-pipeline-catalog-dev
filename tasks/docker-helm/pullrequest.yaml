@@ -36,8 +36,6 @@ spec:
             /kaniko/executor $KANIKO_FLAGS \
             --build-arg=DOCKER_REGISTRY=$DOCKER_REGISTRY/jx \
             --cache=true \
-            --image=openjdk:11 --image=adoptopenjdk:11-jre-hotspot \
-            --cache-copy-layers \
             --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME \
             --context=/workspace/source \
             --dockerfile=Dockerfile \
