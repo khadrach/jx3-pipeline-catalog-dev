@@ -40,6 +40,13 @@ spec:
             --context=/workspace/source \
             --dockerfile=Dockerfile \
             --destination=$PUSH_CONTAINER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
+        - image: ghcr.io/jenkins-x/jx-preview:0.0.172
+          name: promote-jx-preview
+          resources: {}
+          script: |
+            #!/usr/bin/env sh
+            source .jx/variables.sh
+            jx preview create
   podTemplate: {}
   serviceAccountName: tekton-bot
   timeout: 240h0m0s
