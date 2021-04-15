@@ -41,7 +41,7 @@ spec:
             cp /tekton/creds-secrets/tekton-container-registry-auth/.dockerconfigjson /kaniko/.docker/config.json
             
             cat Dockerfile|grep -i from|grep -i " as " "awk '{print $NF}'|\
-                xargs -n 1 -I {} sh -c "echo 'pulling $BRANCH_NAME-{}' && /kaniko/warmer --image=$PUSH_CONTAINER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$BRANCH_NAME-{}"
+                xargs -n 1 -I {} sh -c "echo \"pulling $BRANCH_NAME-{}\" && /kaniko/warmer --image=$PUSH_CONTAINER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$BRANCH_NAME-{}"
   
             cat Dockerfile |grep -i from | grep -i " as " | awk '{print $NF}' |\
                 xargs -n 1 -I {} sh -c "/kaniko/executor $KANIKO_FLAGS \
