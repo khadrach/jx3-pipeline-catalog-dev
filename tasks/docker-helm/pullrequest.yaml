@@ -34,12 +34,12 @@ spec:
             source .jx/variables.sh
             cp /tekton/creds-secrets/tekton-container-registry-auth/.dockerconfigjson /kaniko/.docker/config.json
             /kaniko/executor $KANIKO_FLAGS \
-            --build-arg=DOCKER_REGISTRY=$DOCKER_REGISTRY/jx \
+            --build-arg=DOCKER_REGISTRY=339765050942.dkr.ecr.eu-west-1.amazonaws.com/jx \
             --cache=true \
-            --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME \
+            --cache-repo=339765050942.dkr.ecr.eu-west-1.amazonaws.com/anghami/$APP_NAME \
             --context=/workspace/source \
             --dockerfile=Dockerfile \
-            --destination=$PUSH_CONTAINER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
+            --destination=339765050942.dkr.ecr.eu-west-1.amazonaws.com/anghami:$VERSION
         - image: ghcr.io/jenkins-x/jx-preview:0.0.172
           name: promote-jx-preview
           resources: {}
