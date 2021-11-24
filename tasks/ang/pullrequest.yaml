@@ -12,6 +12,16 @@ spec:
         metadata: {}
         stepTemplate:
           env:
+          - name: MIX_GOOGLE_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: watson-build-secrets
+                key: MIX_GOOGLE_CLIENT_SECRET
+          - name: MIX_GOOGLE_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: watson-build-secrets
+                key: MIX_GOOGLE_CLIENT_ID
           - name: HOME
             value: /tekton/home
           envFrom:
@@ -46,6 +56,8 @@ spec:
             --build-arg=DOCKER_REGISTRY=$DOCKER_REGISTRY/jx/ \
             --build-arg=NPM_TOKEN=$NPM_TOKEN \
             --build-arg=HTTPS_GIT_CREDS=$HTTPS_GIT_CREDS \
+            --build-arg=MIX_GOOGLE_CLIENT_ID=${MIX_GOOGLE_CLIENT_ID}
+            --build-arg=MIX_GOOGLE_CLIENT_SECRET=${MIX_GOOGLE_CLIENT_SECRET}
             --context=/workspace/source \
             --cache=true \
             --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME \
