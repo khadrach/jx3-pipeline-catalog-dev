@@ -22,6 +22,11 @@ spec:
               secretKeyRef:
                 name: watson-build-secrets
                 key: MIX_GOOGLE_CLIENT_ID
+          - name: GIT_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: tekton-git
           - name: HOME
             value: /tekton/home
           envFrom:
@@ -54,8 +59,8 @@ spec:
             cp /tekton/creds-secrets/tekton-container-registry-auth/.dockerconfigjson /kaniko/.docker/config.json
             /kaniko/executor $KANIKO_FLAGS \
             --build-arg=DOCKER_REGISTRY=$DOCKER_REGISTRY/jx/ \
-            --build-arg=NPM_TOKEN=$NPM_TOKEN \
-            --build-arg=HTTPS_GIT_CREDS=$HTTPS_GIT_CREDS \
+            --build-arg=NPM_TOKEN=${NPM_TOKEN} \
+            --build-arg=HTTPS_GIT_CREDS=https://${HTTPS_GIT_CREDS}@github.com \
             --build-arg=MIX_GOOGLE_CLIENT_ID=${MIX_GOOGLE_CLIENT_ID} \
             --build-arg=MIX_GOOGLE_CLIENT_SECRET=${MIX_GOOGLE_CLIENT_SECRET} \
             --context=/workspace/source \
