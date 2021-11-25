@@ -27,6 +27,11 @@ spec:
               secretKeyRef:
                 key: password
                 name: tekton-git
+          - name: NPM_TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: web2-jx
+                name: NPM_TOKEN
           - name: HOME
             value: /tekton/home
           envFrom:
