@@ -87,7 +87,7 @@ spec:
               xargs -n 1 -I{} bash -c "(/kaniko/executor $KANIKO_FLAGS \
                       --build-arg=DOCKER_REGISTRY=$DOCKER_REGISTRY/jx/ \
                       --build-arg=NPM_TOKEN=${NPM_TOKEN} \
-                      --build-arg=HTTPS_GIT_CREDS=https://${HTTPS_GIT_CREDS}@github.com \
+                      --build-arg=HTTPS_GIT_CREDS=https://${GIT_TOKEN}@github.com \
                       --build-arg=MIX_GOOGLE_CLIENT_ID=${MIX_GOOGLE_CLIENT_ID} \
                       --build-arg=MIX_GOOGLE_CLIENT_SECRET=${MIX_GOOGLE_CLIENT_SECRET} \
                       --context=/workspace/source \
