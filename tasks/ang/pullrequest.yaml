@@ -25,13 +25,13 @@ spec:
           - name: GIT_TOKEN
             valueFrom:
               secretKeyRef:
-                key: password
                 name: tekton-git
+                key: password
           - name: NPM_TOKEN
             valueFrom:
               secretKeyRef:
-                key: web2-jx
-                name: NPM_TOKEN
+                name: web2-jx
+                key: NPM_TOKEN
           - name: HOME
             value: /tekton/home
           envFrom:
