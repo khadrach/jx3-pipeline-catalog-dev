@@ -100,8 +100,7 @@ spec:
           resources: {}
           script: |
             #!/usr/bin/env sh
-            apt install curl
-            curl -L 'https://github.com/docker/compose/releases/download/1.28.5/docker-compose-Linux-x86_64' -o docker-compose && chmod +x docker-compose
+            apk add --no-cache py-pip && pip install docker-compose
             ./docker-compose -f docker-compose.test.yaml up --build --abort-on-container-exit
         - image: ghcr.io/jenkins-x-plugins/jx-preview:0.0.192
           name: promote-jx-preview
