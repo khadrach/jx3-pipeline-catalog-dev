@@ -75,6 +75,7 @@ spec:
             #!/busybox/sh
             source .jx/variables.sh
             cp /tekton/creds-secrets/tekton-container-registry-auth/.dockerconfigjson /kaniko/.docker/config.json
+            apt-get install findutils
             cat Dockerfile |\
               grep -i from |\
               grep -i " as " |\
