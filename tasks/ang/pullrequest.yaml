@@ -80,7 +80,6 @@ spec:
             #!/busybox/sh
             source .jx/variables.sh
             cp /tekton/creds-secrets/tekton-container-registry-auth/.dockerconfigjson /kaniko/.docker/config.json
-            apk add findutils
             cat Dockerfile |\
               grep -i from |\
               grep -i " as " |\
@@ -96,12 +95,13 @@ spec:
                       --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME \
                       --dockerfile=Dockerfile \
                       --destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:stage_{}-$VERSION) || exit 255"
-        - image: docker/compose:1.25.5
+        - image: 339765050942.dkr.ecr.eu-west-1.amazonaws.com/docker:20.10.11-dind
           name: docker-compose-test
           resources: {}
           script: |
             #!/usr/bin/env sh
-            docker-compose -f docker-compose.test.yaml up --build --abort-on-container-exit
+            apk add docker-compose
+            ./docker-compose -f docker-compose.test.yaml up --build --abort-on-container-exit
         - image: ghcr.io/jenkins-x-plugins/jx-preview:0.0.192
           name: promote-jx-preview
           resources: {}
