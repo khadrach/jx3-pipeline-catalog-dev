@@ -103,7 +103,6 @@ spec:
           resources: {}
           script: |
             #!/usr/bin/env sh
-            apk add docker-compose
             docker-compose -f docker-compose.test.yaml up --build --abort-on-container-exit
         - image: ghcr.io/jenkins-x-plugins/jx-preview:0.0.192
           name: promote-jx-preview
