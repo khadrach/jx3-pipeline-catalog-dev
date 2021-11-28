@@ -44,6 +44,11 @@ spec:
               cpu: 400m
               memory: 512Mi
           workingDir: /workspace/source
+        volumes:
+        - name: dind-storage
+          emptyDir: {}
+        - name: dind-socket
+          emptyDir: {}
         sidecars:
         - image: docker:18.05-dind
           name: server
