@@ -34,6 +34,8 @@ spec:
                 key: NPM_TOKEN
           - name: HOME
             value: /tekton/home
+          - name: DOCKER_HOST
+            value: http+unix://var/run/docker.sock
           envFrom:
           - secretRef:
               name: jx-boot-job-env-vars
@@ -117,7 +119,7 @@ spec:
           resources: {}
           script: |
             #!/usr/bin/env sh
-            export DOCKER_HOST=http+unix://var/run/docker.sock && docker-compose -f docker-compose.test.yaml up --build --abort-on-container-exit
+            docker-compose -f docker-compose.test.yaml up --build --abort-on-container-exit
           volumeMounts:
           - mountPath: /var/run/
             name: dind-socket
