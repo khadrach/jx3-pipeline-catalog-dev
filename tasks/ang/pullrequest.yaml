@@ -55,7 +55,7 @@ spec:
           securityContext:
             privileged: true
           script: |
-            /usr/local/bin/aws ecr get-login-password | docker login --username AWS --password-stdin 339765050942.dkr.ecr.eu-west-1.amazonaws.com
+            /usr/local/bin/aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 339765050942.dkr.ecr.eu-west-1.amazonaws.com
           volumeMounts:
             - mountPath: /var/lib/docker
               name: dind-storage
