@@ -117,7 +117,7 @@ spec:
           resources: {}
           script: |
             #!/usr/bin/env sh
-            DOCKER_HOST=http+unix://var/run/docker.sock && docker-compose -f docker-compose.test.yaml up --build --abort-on-container-exit
+            sudo docker-compose -f docker-compose.test.yaml up --build --abort-on-container-exit
           volumeMounts:
           - mountPath: /var/run/
             name: dind-socket
