@@ -123,6 +123,20 @@ spec:
           volumeMounts:
           - mountPath: /var/run/
             name: dind-socket
+        - image: docker
+          name: client
+          script: |
+            #!/usr/bin/env bash
+            cat > Dockerfile << EOF
+            FROM ubuntu
+            RUN apt-get update
+            ENTRYPOINT ["echo", "hello"]
+            EOF
+            docker build -t hello . && docker run hello
+            docker images
+          volumeMounts:
+            - mountPath: /var/run/
+              name: dind-socket
         - image: ghcr.io/jenkins-x-plugins/jx-preview:0.0.192
           name: promote-jx-preview
           resources: {}
