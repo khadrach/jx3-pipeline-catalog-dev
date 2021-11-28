@@ -119,7 +119,7 @@ spec:
           resources: {}
           script: |
             #!/usr/bin/env sh
-            docker-compose -f docker-compose.test.yaml up --build --abort-on-container-exit
+            DOCKER_HOST=$DOCKER_HOST && docker-compose -f docker-compose.test.yaml up --build --abort-on-container-exit
           volumeMounts:
           - mountPath: /var/run/
             name: dind-socket
