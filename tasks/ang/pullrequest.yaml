@@ -126,7 +126,7 @@ spec:
         - image: docker
           name: client
           script: |
-            #!/usr/bin/env bash
+            #!/usr/bin/env sh
             cat > Dockerfile << EOF
             FROM ubuntu
             RUN apt-get update
