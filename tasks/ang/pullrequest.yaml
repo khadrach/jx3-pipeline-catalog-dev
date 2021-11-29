@@ -115,6 +115,7 @@ spec:
           resources: {}
           script: |
             #!/usr/bin/env sh
+            docker ps
             docker-compose -f docker-compose.test.yaml up --build --abort-on-container-exit
           volumeMounts:
           - mountPath: /var/run/
