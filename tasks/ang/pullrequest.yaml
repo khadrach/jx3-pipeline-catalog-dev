@@ -110,7 +110,7 @@ spec:
                       --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME \
                       --dockerfile=Dockerfile \
                       --destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:stage_{}-$VERSION) || exit 255"
-        - image: docker/compose:1.25.5
+        - image: docker/compose:1.28.5
           name: docker-compose-test
           resources: {}
           script: |
