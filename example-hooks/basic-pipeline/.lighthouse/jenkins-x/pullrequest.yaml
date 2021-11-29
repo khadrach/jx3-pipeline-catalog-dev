@@ -9,7 +9,9 @@ spec:
     - name: from-build-pack
       resources: {}
       taskSpec:
-        metadata: {}
+        metadata:
+          annotations:
+            iam.amazonaws.com/role: ClusterA.jx.JenkinsX
         stepTemplate:
           image: uses:anghami/jx3-pipeline-catalog/tasks/ang/pullrequest.yaml@HEAD
           name: ""
