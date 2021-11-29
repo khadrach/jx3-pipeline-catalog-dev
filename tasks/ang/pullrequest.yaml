@@ -50,14 +50,10 @@ spec:
         - name: dind-socket
           emptyDir: {}
         sidecars:
-        - image: 339765050942.dkr.ecr.eu-west-1.amazonaws.com/docker:20.10.11-dind-aws
+        - image: docker:18.05-dind
           name: server
           securityContext:
             privileged: true
-          script: |
-            aws ecr get-login-password | docker login --username AWS --password-stdin 339765050942.dkr.ecr.eu-west-1.amazonaws.com
-            sleep 160
-            echo "exit"
           volumeMounts:
             - mountPath: /var/lib/docker
               name: dind-storage
