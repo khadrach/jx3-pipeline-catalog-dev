@@ -14,6 +14,26 @@ spec:
             iam.amazonaws.com/role: ClusterA.jx.JenkinsX
         stepTemplate:
           env:
+          - name: MIX_GOOGLE_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: watson-build-secrets
+                key: MIX_GOOGLE_CLIENT_SECRET
+          - name: MIX_GOOGLE_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: watson-build-secrets
+                key: MIX_GOOGLE_CLIENT_ID
+          - name: GIT_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: tekton-git
+                key: password
+          - name: NPM_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: web2-jx
+                key: NPM_TOKEN
           - name: HOME
             value: /tekton/home
           envFrom:
