@@ -118,7 +118,7 @@ spec:
                   --cache=true \
                   --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME \
                   --dockerfile=Dockerfile \
-                  --destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:stage_$stage-$VERSION
+                  --destination=$destination
               done
         - image: 339765050942.dkr.ecr.eu-west-1.amazonaws.com/docker-compose:1.28.5
           name: docker-compose-test
