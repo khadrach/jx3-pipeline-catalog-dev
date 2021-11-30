@@ -109,6 +109,7 @@ spec:
                   --build-arg=MIX_GOOGLE_CLIENT_ID=${MIX_GOOGLE_CLIENT_ID} \
                   --build-arg=MIX_GOOGLE_CLIENT_SECRET=${MIX_GOOGLE_CLIENT_SECRET} \
                   --context=/workspace/source \
+                  --target=$stage \
                   --cache=true \
                   --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME \
                   --dockerfile=Dockerfile \
