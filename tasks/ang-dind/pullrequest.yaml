@@ -102,6 +102,11 @@ spec:
               grep -i " as " |\
               awk '{print $NF}' |\
               while read stage; do
+                if [ "$stage" = "serve" ]; then
+                    destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
+                else
+                    destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:stage_$stage-$VERSION
+                fi
                 /kaniko/executor $KANIKO_FLAGS \
                   --build-arg=DOCKER_REGISTRY=$DOCKER_REGISTRY/jx/ \
                   --build-arg=NPM_TOKEN=${NPM_TOKEN} \
