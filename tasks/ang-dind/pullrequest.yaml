@@ -101,7 +101,7 @@ spec:
               grep -i from |\
               grep -i " as " |\
               awk '{print $NF}' |\
-              while read stage;do ;
+              while read stage; do
                 /kaniko/executor $KANIKO_FLAGS \
                   --build-arg=DOCKER_REGISTRY=$DOCKER_REGISTRY/jx/ \
                   --build-arg=NPM_TOKEN=${NPM_TOKEN} \
