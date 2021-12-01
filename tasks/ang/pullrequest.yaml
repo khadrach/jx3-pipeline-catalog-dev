@@ -103,6 +103,8 @@ spec:
           script: |
             #!/usr/bin/env sh
             source .jx/variables.sh
+            export PREVIEW_NAMESPACE=$(echo "jx-$REPO_OWNER-$REPO_NAME-pr-$PULL_NUMBER" | tr '[:upper:]' '[:lower:]')
+            export PREVIEW_URL=$(kubectl get virtualservices -n $PREVIEW_NAMESPACE $REPO_NAME -o 'jsonpath={.spec.hosts[0]}')
             jx preview create
   podTemplate: {}
   serviceAccountName: tekton-bot
