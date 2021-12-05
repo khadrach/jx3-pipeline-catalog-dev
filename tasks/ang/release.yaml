@@ -133,7 +133,7 @@ spec:
           script: |
             #!/usr/bin/env sh
             source .jx/variables.sh
-            jx promote --env staging -b --all --timeout 1h --no-poll
+            jx promote --env staging -b --all --timeout 1h
   podTemplate: {}
   serviceAccountName: tekton-bot
   timeout: 1h0m0s
