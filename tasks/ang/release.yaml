@@ -82,6 +82,7 @@ spec:
           script: |
             #!/usr/bin/env sh
             jx gitops variables
+            export APP_NAME=${APP_NAME//./_}
         - image: ghcr.io/jenkins-x/jx-registry:0.1.1
           name: check-registry
           resources: {}
