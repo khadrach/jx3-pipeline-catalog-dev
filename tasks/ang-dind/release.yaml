@@ -129,6 +129,7 @@ spec:
                   --build-arg=HTTPS_GIT_CREDS=https://${GIT_TOKEN}@github.com \
                   --build-arg=MIX_GOOGLE_CLIENT_ID=${MIX_GOOGLE_CLIENT_ID} \
                   --build-arg=MIX_GOOGLE_CLIENT_SECRET=${MIX_GOOGLE_CLIENT_SECRET} \
+                  --build-arg=BUILD_MODE=live \
                   --context=/workspace/source \
                   --target=$stage \
                   --cache=true \
