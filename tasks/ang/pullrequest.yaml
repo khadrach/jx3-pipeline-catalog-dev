@@ -104,7 +104,7 @@ spec:
             #!/usr/bin/env sh
             source .jx/variables.sh
             export PREVIEW_URL=$(kubectl get virtualservices -n $PREVIEW_NAMESPACE $REPO_NAME -o 'jsonpath={.spec.hosts[0]}')
-            jx preview create
+            jx preview create --no-merge
   podTemplate: {}
   serviceAccountName: tekton-bot
   timeout: 12h0m0s
